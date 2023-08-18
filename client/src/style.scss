@@ -1,0 +1,111 @@
+$fern: #66af6b;
+$lightGray: #555;
+
+.app {
+    margin: 0 auto;
+    max-width: 80%;
+    .container {
+        padding: 0;
+        margin: 0;
+        // Navbar
+        .navbar {
+            margin-bottom: 50px;
+            .container-navbar {
+                padding-left: 0;
+                .navbar-brand {
+                    color: $fern;
+                }
+                .navbar-nav {
+                    .nav-item {
+                        .nav-link {
+                            color: $fern;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        // Home content
+        .column {
+            .left-aside {
+                flex: 5;
+                h1 {
+                    font-size: 48px;
+                }
+                button {
+                    width: max-content;
+                    padding: 10px 20px;
+                    border: none;
+                    cursor: pointer;
+                    background-color: #fff;
+                    border: 1px solid teal;
+                    color: teal;
+                
+                    &:hover {
+                        border: 1px solid #fff;
+                        background-color: $fern;
+                        color: #000;
+                    }
+                }
+
+                h1 {
+                    color: $lightGray;
+                }
+
+            }
+
+            .right-aside {
+                flex: 3;
+            }
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 5em;           
+            background-color: $fern;
+            margin: 2em 0 0 0;
+            padding: 0;
+            // .footer-logo {
+            //     margin-left: 1em;
+            // }
+        }
+
+        @media (min-width: 990px) {
+            .column {
+                display: flex;
+                gap: 100px;
+                &:nth-child(2n+1) {
+                    flex-direction: row-reverse;
+                }
+
+                .right-aside {
+                    img {
+                        height: 90%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 990px) {
+            // .my-row {
+            //     margin: 3em 0; 
+            // }
+            .column {
+                flex: none;
+                .left-aside {
+                    h1 {
+                        font-size: 36px;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
