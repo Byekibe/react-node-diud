@@ -6,11 +6,11 @@ function App() {
 
   return (
     <div className="app">
-      <div className="container">
+      <div className="my-container">
         <RouterProvider router={router} />
       </div>
     </div>
   )
 }
 
-export default App
+export default App;

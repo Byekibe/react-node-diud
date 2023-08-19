@@ -1,5 +1,6 @@
 import { createBrowserRouter, Route, Link } from "react-router-dom";
 import Home from "./pages/Home.jsx";
+import Single from './pages/Single.jsx';
 
 
 const router = createBrowserRouter([
@@ -8,8 +9,8 @@ const router = createBrowserRouter([
       element: <Home />,
     },
     {
-      path: "about",
-      element: <div>About</div>,
+      path: "/single/:id",
+      element: <Single />,
     },
   ]);
 
