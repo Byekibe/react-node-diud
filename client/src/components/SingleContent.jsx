@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaEdit } from 'react-icons/fa';
 import { BsTrash } from 'react-icons/bs';
 
 const SingleContent = () => {
+    const { id } = useParams();
 
     const posts = [
         {
@@ -59,8 +60,8 @@ const SingleContent = () => {
                                 <h3>Posted 3 days ago</h3>
                             </div>
                             <div className="alter">
-                                <Link className="links" to="/"><FaEdit /></Link>
-                                <Link className="links" to="/"><BsTrash /></Link>
+                                <Link className="links" to={`/edit/${id}`}><FaEdit /></Link>
+                                <Link className="links" to={`/write?delete=${id}`}><BsTrash /></Link>
                             </div>
                         </div>
                     </div>
@@ -75,6 +76,8 @@ const SingleContent = () => {
                             ullam dicta reprehenderit illum! Quaerat sint, porro pariatur earum ut nostrum
                             facere, sunt sequi vitae corrupti est iure alias non commodi sed consequuntur
                             velit architecto cumque? Dolor asperiores aut vero eius nobis vel consequuntur
+                            <br />
+                            <br />
                             rem illo qui itaque repellendus tempora perferendis quod excepturi, quidem
                             nesciunt nihil distinctio iure iusto aliquam placeat quae ullam magni eum.
                             Recusandae commodi cum odit totam illum quo mollitia neque voluptatibus
@@ -85,6 +88,7 @@ const SingleContent = () => {
                             eius fuga ducimus minima, qui quod doloribus consequatur. Quaerat fugit ut 
                             accusamus minima error facere molestiae optio illum et cupiditate quae mollitia
                             odio magni, sit minus expedita quibusdam exercitationem unde, dolorum, cumque
+                            <br /><br />
                             officia quo incidunt ad. Repudiandae, debitis nulla est, rerum ipsum sint nobis
                             deleniti distinctio molestias aliquam neque possimus nesciunt qui quasi, molestiae
                             facilis accusamus perferendis labore? At voluptas soluta nobis reprehenderit, 
@@ -105,7 +109,7 @@ const SingleContent = () => {
                             {
                                 posts.map(post => {
                                     return (
-                                        <div className="posts ms-4 mt-5">
+                                        <div key={crypto.randomUUID()} className="posts ms-4 mt-5">
                                             <div className="img-holder">
                                                 <img className="img-fluid" src={post.img} alt="" />
                                             </div>

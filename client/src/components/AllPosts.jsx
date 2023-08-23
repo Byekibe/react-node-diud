@@ -12,13 +12,13 @@ const AllPosts = ({ post }) => {
     return (
         <div className="column col col-sm-12 col-md-12 col-lg-12">
             <div className="right-aside">
-                <Link to="/single/2">
+                <Link to={`/post/${post.id}`}>
                     <img className="img-fluid" src={post.img} alt={post.desc} />
                 </Link>
             </div>
             <div className="left-aside">
                 <h1>
-                    <Link style={style} className="links" to="/single/2">{post.title}</Link>
+                    <Link style={style} className="links" to={`/post/${post.id}`}>{post.title}</Link>
                 </h1>
                 <p>{post.desc}</p>
                 <button 
@@ -26,7 +26,7 @@ const AllPosts = ({ post }) => {
                     onMouseEnter={() => setFontColor(true)}
                     onMouseLeave={() => setFontColor(false)}
                 >
-                    <Link to="/single/2">Read more</Link>
+                    <Link className="link" to={`/post/${post.id}`}>Read more</Link>
                 </button>
             </div>
         </div>
