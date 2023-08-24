@@ -109,7 +109,7 @@ const SingleContent = () => {
                             {
                                 posts.map(post => {
                                     return (
-                                        <div key={crypto.randomUUID()} className="posts ms-4 mt-5">
+                                        <div key={post.id} className="posts ms-4 mt-5">
                                             <div className="img-holder">
                                                 <img className="img-fluid" src={post.img} alt="" />
                                             </div>
