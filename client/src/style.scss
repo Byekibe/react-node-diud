@@ -314,6 +314,91 @@ $lightGray: #555;
             }
         }
 
+
+        // Register
+        .container-register {
+            background-color: $fern;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .form-register {
+                min-width: 30%;
+                background-color: #fff;
+                padding: 10px;
+                height: fit-content;
+
+                h1 {
+                    color: $fern;
+                    text-align: center;
+                }
+
+                .btn-signup {
+                    text-align: center;
+                    button {
+                        width: fit-content;
+                        padding: 0.375em 1em;
+                        background-color: $fern;
+                        color: #fff;
+                        border: 1px solid #fff;
+
+                        &:hover {
+                            background-color: #fff;
+                            cursor: pointer;
+                            color: $fern;
+                            border: 1px solid $fern;
+                        }
+                    }
+                }
+
+                .login {
+                    margin: 1em 0;
+                }
+            }
+        }
+
+
+        // Log in 
+        .container-login {
+            background-color: $fern;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .form-login {
+                background-color: #fff;
+                padding: 10px;
+                min-width: 30%;
+                h1 {
+                    text-align: center;
+                    color: $fern;
+                }
+                .form-log {
+                    .login-btn {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        button {
+                            width: fit-content;
+                            padding: 0.375em 1em;
+                            background-color: $fern;
+                            border: 1px solid #fff;
+                            color: #fff;
+                            text-align: center;
+    
+                            &:hover {
+                                color: $fern;
+                                background-color: #fff;
+                                cursor: pointer;
+                                border: 1px solid $fern;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         @media (min-width: 991px) {
             .column {
                 display: flex;
