@@ -109,6 +109,18 @@ $lightGray: #555;
                     .copyright {
                         color: #fff;
                     }
+
+                    .socials {
+                        ul {
+                            display: flex;
+                            margin: 0.75em 0;
+                            li {
+                                list-style-type: none;
+                                margin-right: 0.5em;
+                                color: #fff;
+                            }
+                        }
+                    }
                 }
 
 
