@@ -66,41 +66,41 @@ const Write = () => {
                         <div className="categories">
                             <ul>
                                 <li>
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="food" />
-                                    <label class="form-check-label" for="food">
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="food" />
+                                    <label className="form-check-label" htmlFor="food">
                                         Food
                                     </label>
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="diet" />
-                                    <label class="form-check-label" for="diet">
+                                    <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="diet" />
+                                    <label className="form-check-label" htmlFor="diet">
                                         Diet
                                     </label>
                                     </div>
                                 </li>
                                 <li>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="nutrition" />
-                                    <label class="form-check-label" for="nutrition">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="nutrition" />
+                                    <label className="form-check-label" htmlFor="nutrition">
                                         Nutrition
                                     </label>
                                     </div>
                                 </li>
                                 <li>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="exercise" />
-                                    <label class="form-check-label" for="exercise">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="exercise" />
+                                    <label className="form-check-label" htmlFor="exercise">
                                         Exercise
                                     </label>
                                     </div>
                                 </li>
                                 <li>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="health" />
-                                    <label class="form-check-label" for="health">
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="health" />
+                                    <label className="form-check-label" htmlFor="health">
                                         Health
                                     </label>
                                     </div>

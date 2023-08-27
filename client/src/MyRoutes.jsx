@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Register from './pages/Register.jsx';
 import Login from "./pages/Login.jsx";
+import Err from "./pages/Err.jsx";
 
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />
+  },
+  {
+    path: "*",
+    element: <Err />
   }
 
   ]);

@@ -34,7 +34,7 @@ const HomeContent = () => {
         }
     ]
     return (
-        <div className="row my-row">
+        <div className="row my-row" style={{ marginTop: "5em" }}>
             {
                 posts.map(post => {
                     return (

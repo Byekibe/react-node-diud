@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { BsArrowRight } from 'react-icons/bs';
 
 const AllPosts = ({ post }) => {
 
@@ -26,7 +27,7 @@ const AllPosts = ({ post }) => {
                     onMouseEnter={() => setFontColor(true)}
                     onMouseLeave={() => setFontColor(false)}
                 >
-                    <Link className="link" to={`/post/${post.id}`}>Read more</Link>
+                    <Link className="link" to={`/post/${post.id}`}>Read more <BsArrowRight /></Link>
                 </button>
             </div>
         </div>

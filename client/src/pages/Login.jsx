@@ -1,31 +1,35 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios"
 
 const Login = () => {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        console.log(email, password)
+    
+        setUsername("");
+        setPassword("");
     }
 
     return (
-        <div className="container-login">
+        <div className="container container-login">
             <div className="form-login">
                 <h1>Login</h1>
                 <form onSubmit={handleSubmit} className="form-log">
                     <div className="form-floating mb-3">
                         <input 
-                            type="email" 
+                            type="text" 
                             className="form-control" 
-                            id="floatingInput" 
-                            placeholder="name@example.com"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
+                            id="floatingName" 
+                            placeholder="pierre"
+                            name="username"
+                            value={username}
+                            onChange={e => setUsername(e.target.value)}
+                            required
                         />
-                        <label htmlFor="floatingInput">Email address</label>
+                        <label htmlFor="floatingName">Username</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input 
@@ -34,7 +38,9 @@ const Login = () => {
                             id="floatingPassword" 
                             placeholder="Password"
                             value={password} 
+                            name="password"
                             onChange={e => setPassword(e.target.value)}
+                            required
                         />
                         <label htmlFor="floatingPassword">Password</label>
                     </div>
