@@ -1,9 +1,15 @@
-import MDEditor from '@uiw/react-md-editor';
+// import MDEditor from '@uiw/react-md-editor';
 import { useState } from 'react';
+import { MdEditor, MdCatalog } from 'md-editor-rt';
+import 'md-editor-rt/lib/preview.css';
+
+const scrollElement = document.documentElement;
 
 const Write = () => {
-    const [blogBody, setBlogBody] = useState("");
+    // const [blogBody, setBlogBody] = useState("");
+    const [text, setText] = useState('# Hello Editor');
     const [title, setTitle] = useState("");
+    const [id] = useState('preview-only');
 
     const handleClick = () => {
         if (blogBody !== "" && title !== "") {
@@ -35,11 +41,14 @@ const Write = () => {
 
                 <div className="form-floating mb-3 textarea">
                     {/* <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea" required></textarea> */}
-                    <MDEditor
+                    {/* <MDEditor
                         value={blogBody}
                         onChange={setBlogBody}
                         className='textarea-editor'
-                    />
+                    /> */}
+
+                    <MdEditor modelValue={text} onChange={setText} />
+                    <MdCatalog editorId={id} scrollElement={scrollElement} />
                     {/* <MDEditor.Markdown source={blogBody} style={{ whiteSpace: 'pre-wrap' }} />                  */}
                 </div>
                 </form>

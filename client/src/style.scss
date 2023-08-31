@@ -16,6 +16,17 @@ $lightGray: #555;
                 .navbar-brand {
                     color: $fern;
                 }
+
+                .brandy {
+                    border: 5px solid #fff;
+                    padding: 10px 20px;
+
+                    &:hover {
+                        border: 5px solid $fern;
+                        padding: 10px 20px;
+                    }
+                }
+
                 .navbar-nav {
                     .nav-item {
                         .nav-link {
@@ -142,6 +153,7 @@ $lightGray: #555;
 
         .single-content {
            padding: 0;
+           margin-top: 5em;
 
            .row {
                 .col-single {
@@ -158,6 +170,8 @@ $lightGray: #555;
 
                         .cap-desc {
                             display: flex;
+                            align-items: center;
+                            justify-content: center;
                             .desc-words {
                                 display: flex;
                                 flex-direction: column;
@@ -178,6 +192,10 @@ $lightGray: #555;
                                 
                                 .links {
                                     margin-right: 1em;
+                                }
+
+                                .trash {
+                                    color: red;
                                 }
                             }
                         }

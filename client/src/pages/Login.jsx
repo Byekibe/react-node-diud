@@ -1,14 +1,34 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
+import { AuthContext } from "../context/authContext";
 
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [err, setErr] = useState(null);
+
+    const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
+
+    const options = {
+        "username": username,
+        "password": password
+    }
+
+    // const url = "http://localhost:7007/api/auth/login"
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+        try {
+            // await axios.post(url, options);
+           await login(options)
+            navigate("/");
+        } catch (err) {
+            setErr(err);
+            console.log(err)
+        }
+
         setUsername("");
         setPassword("");
     }
@@ -47,6 +67,7 @@ const Login = () => {
                     <div className="login-btn mb-3">
                         <button>Log in</button>
                     </div>
+                    <p className="text-center text-danger">{err && err.response?.data}</p>
                 </form>
                 <div className="register">
                     <p>Don't have an account? <Link to="/register">Sign up</Link></p>
