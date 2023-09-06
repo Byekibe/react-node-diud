@@ -18,12 +18,12 @@ $lightGray: #555;
                 }
 
                 .brandy {
-                    border: 5px solid #fff;
-                    padding: 10px 20px;
+                    border: 3px solid #fff;
+                    padding: 5px 10px;
 
                     &:hover {
-                        border: 5px solid $fern;
-                        padding: 10px 20px;
+                        border: 3px solid $fern;
+                        padding: 5px 10px;
                     }
                 }
 
@@ -31,6 +31,29 @@ $lightGray: #555;
                     .nav-item {
                         .nav-link {
                             color: $fern;
+                        }
+
+                        .login {
+                            border: 2px solid #fff;
+                            padding: 5px 20px;
+                            &:hover {
+                                border: 2px solid $fern;
+                                border-radius: 5px;
+                                padding: 5px 20px;
+                                color: #555;
+                            }
+                        }
+
+                        .logout {
+                            margin: 0 10px;
+                            border: 2px solid #fff;
+                            padding: 5px 20px;
+                            &:hover {
+                                border: 2px solid $fern;
+                                border-radius: 5px;
+                                padding: 5px 20px;
+                                color: #555;
+                            }
                         }
 
                         .nav-item-write {
@@ -156,13 +179,14 @@ $lightGray: #555;
            margin-top: 5em;
 
            .row {
+            // margin: 0;
                 .col-single {
                     flex: 4;
-
+                    padding: 0;
                     .caption {
                         display: flex;
                         margin: 0 auto;
-                        width: 95%;
+                        width: 100%;
 
                         .img-holder-person {
                             
@@ -175,7 +199,7 @@ $lightGray: #555;
                             .desc-words {
                                 display: flex;
                                 flex-direction: column;
-                                margin-left: 1em;
+                                
 
                                 h2 {
                                     font-size: 18px;
@@ -196,27 +220,38 @@ $lightGray: #555;
 
                                 .trash {
                                     color: red;
+
+                                    &:hover {
+                                        cursor: pointer;
+                                    }
                                 }
                             }
+                        }
+
+                        .title {
+                            display: none;
                         }
                     }
 
                     .img-holder {
-                        height: 400px;
+                        height: auto;
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         img {
-                            width: 95%;
-                            height: 100%;
+                            width: 100%;
                             object-fit: cover;
                         }
                     }
 
+                    .title {
+                        
+                    }
+
                     .post-body {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
+                        // display: flex;
+                        // justify-content: center;
+                        // align-items: center;
 
                         p {
                             width: 95%;
@@ -232,17 +267,21 @@ $lightGray: #555;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    justify-content: center;
-                    max-width: 95%;
+                    // justify-content: center;
+                    max-width: 100%;
 
                     .row {
+                        padding: 0;
                         .col {
+                            padding: 0;
                             .posts {
                                 .img-holder {
                                     // Continue from here
+                                    height: auto;
                                     min-width: 100%;
                                     img {
                                         width: 100%;
+                                        max-height: 90%;
                                     }
                                 }
 
@@ -259,11 +298,16 @@ $lightGray: #555;
         // Write
 
         .container {
+            .button-post {
+                padding: 0;
+            }
+
             .row {
                 .col-editor {
                     flex: 5;
 
                     form {
+                        margin-top: 5em;
                         .btn-custom {
                             width: max-content;
                             padding: 5px 20px;
@@ -278,13 +322,13 @@ $lightGray: #555;
                             }
                         }
 
-                        .textarea {
-                            height: 430px;
+                        // .textarea {
+                        //     height: 430px;
 
-                            .textarea-editor {
-                                min-height: 100%;
-                            }
-                        }
+                        //     .textarea-editor {
+                        //         min-height: 100%;
+                        //     }
+                        // }
                     }
                 }
 
@@ -310,6 +354,16 @@ $lightGray: #555;
                             height: 300px;
                             border: 1px solid #555;
                             margin-bottom: 5px;
+                            span {
+                                margin-right: 10px;
+                                b {
+                                    margin-right: 10px;
+                                }
+                            }
+
+                            .file {
+                                text-decoration: underline;
+                            }
 
                             .buttons {
                                 .draft, .update {
@@ -319,11 +373,26 @@ $lightGray: #555;
                                     cursor: pointer;
                                     background-color: #fff;
                                     border: 1px solid teal;
+                                    margin-right: 10px;
                 
                                     &:hover {
                                         background-color: $fern;
                                         color: #fff;
                                     }
+                                }
+                            }
+
+                            .url-box {
+                                width: 100%;
+                                height: 4em;
+                                border: 2px solid black;
+                                border-radius: 5px;
+                                font-size: 1.25em;
+                                
+                                &:hover {
+                                    cursor: pointer;
+                                    caret-color: red;
+                                    caret-shape: underscore;
                                 }
                             }
                         }
@@ -442,6 +511,13 @@ $lightGray: #555;
         }
 
         @media (min-width: 991px) {
+            .single-content {
+                .row {
+                    .col-aside {
+                        margin-left: 3em;
+                    }
+                }
+            }
             .column {
                 display: flex;
                 gap: 100px;
@@ -463,6 +539,14 @@ $lightGray: #555;
             // .my-row {
             //     margin: 3em 0; 
             // }
+            .brandy {
+                margin-left: 18px;
+            }
+
+            .toggly {
+                margin-right: 0.5em;
+            }
+
             .column {
                 flex: none;
                 .left-aside {
@@ -480,16 +564,50 @@ $lightGray: #555;
                 .row {
                     display: flex;
                     flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0 2em;
 
+                    .col-single {
+                        .title {
+                            text-align: justify;
+                        }
+                    }
                     .img-holder {
-                        height: 300px;
                         width: 100%;
+
+                        img {
+                            object-fit: cover;
+                        }
                     }
                 }
             }
         }
 
         @media (max-width: 991px) {
+            .container {
+                .navbar {
+                    .container-navbar {
+                        .nav-coll {
+                            .ul-comp {
+                                .nav-item {
+                                    .logout {
+                                        max-width: fit-content;
+                                        margin: 0;
+                                        margin-bottom: 0.5em;
+                                    }
+
+                                    .login {
+                                        max-width: fit-content;
+                                        margin: 0;
+                                        margin-bottom: 0.5em;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             .write-container {
                 display: flex;
                 flex-direction: column;
@@ -562,6 +680,29 @@ $lightGray: #555;
         }
 
         @media(max-width: 720px) {
+            .container {
+                .navbar {
+                    .container-navbar {
+                        .nav-coll {
+                            .ul-comp {
+                                .nav-item {
+                                    .logout {
+                                        max-width: fit-content;
+                                        margin: 0;
+                                        margin-bottom: 0.5em;
+                                    }
+
+                                    .login {
+                                        max-width: fit-content;
+                                        margin: 0;
+                                        margin-bottom: 0.5em;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             .footer {
                 .row {
                     text-align: center;

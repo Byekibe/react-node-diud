@@ -2,23 +2,61 @@
 import { useState } from 'react';
 import { MdEditor, MdCatalog } from 'md-editor-rt';
 import 'md-editor-rt/lib/preview.css';
+import 'md-editor-rt/lib/style.css';
+import {useLocation, useNavigate} from 'react-router-dom';
+import axios from 'axios';
+import moment from 'moment';
 
 const scrollElement = document.documentElement;
 
 const Write = () => {
-    // const [blogBody, setBlogBody] = useState("");
-    const [text, setText] = useState('# Hello Editor');
-    const [title, setTitle] = useState("");
+    const navigate = useNavigate();
+    const state = useLocation().state;
+    const [text, setText] = useState(state?.desc || "");
+    const [title, setTitle] = useState(state?.title || "");
+    const [file, setFile] = useState(null);
+    const [cat, setCat] = useState(state?.cat || "");
+    const [imgUrl, setImgUrl] = useState(state?.img || "");
     const [id] = useState('preview-only');
+    // unoptimized
+    // console.log(state);
+    const addOpts = {
+        method: "POST",
+        withCredentials: 'true',
+    }
 
-    const handleClick = () => {
-        if (blogBody !== "" && title !== "") {
-            console.log(blogBody, title);
-            setBlogBody("");
-            setTitle("");
+    const updateOpts = {
+        method: "PUT",
+        withCredentials: 'true'
+    }
+
+    const inputs = {
+        title, desc: text, cat, img: imgUrl
+    }
+
+    const addInputs = {
+        title, desc: text, cat, img: imgUrl, date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
+    }
+
+    const update_post_url = `http://localhost:7007/api/posts/${state?.id}`
+    const add_post_url = `http://localhost:7007/api/posts`
+    const handleClick = async () => {
+        if (text !== "" && title !== "" && imgUrl !=="" && cat !== "") {
+            try {
+                state? await axios.put(update_post_url, inputs, updateOpts) : await axios.post(add_post_url, addInputs, addOpts);
+                setTitle("");
+                setText("")
+                setImgUrl("")
+                setCat("") 
+                navigate("/")
+            } catch (error) {
+                console.log(error)
+            }
+            
         } else {
             alert("Please fill out the fields!!")
         }
+
     }
 
     return (
@@ -47,8 +85,16 @@ const Write = () => {
                         className='textarea-editor'
                     /> */}
 
-                    <MdEditor modelValue={text} onChange={setText} />
-                    <MdCatalog editorId={id} scrollElement={scrollElement} />
+                    <>
+                        <MdEditor
+                            modelValue={text}
+                            theme="dark"
+                            language="en-US"
+                            onChange={(modelValue) => {setText(modelValue)}}
+                        />
+                        <MdCatalog editorId={id} scrollElement={scrollElement} />
+                    </>
+
                     {/* <MDEditor.Markdown source={blogBody} style={{ whiteSpace: 'pre-wrap' }} />                  */}
                 </div>
                 </form>
@@ -63,12 +109,27 @@ const Write = () => {
                         <span>
                             <b>Visibility: </b> Public
                         </span>
-                        <input style={{ display: "none" }} type="file" name="" id="file" />
+                        <input 
+                            style={{ display: "none" }} 
+                            type="file" 
+                            name="" 
+                            id="file" 
+                            onChange={e => setFile(e.target.files[0])} 
+                        />
                         <label className='file' htmlFor="file">Upload Image</label>
-                        <div className="buttons">
+                        <div className="buttons mb-5">
                             <button className='draft'>Save as a draft</button>
-                            <button className='update'>Update</button>
+                            <button className='update'>Publish</button>
                         </div>
+                        <input 
+                            className='mb-5 url-box'
+                            type="text"
+                            placeholder='Enter image URL https://exampleimage.com: Step number 1'
+                            name="url_img"
+                            id='url_img'
+                            value={imgUrl}
+                            onChange={e => setImgUrl(e.target.value)}
+                        />
                         </div>
                     </div>
                     <div className="row">
@@ -76,7 +137,7 @@ const Write = () => {
                             <ul>
                                 <li>
                                     <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="food" />
+                                    <input className="form-check-input" type="radio" checked={cat === "food"} name="cat" id="food" value="food" onChange={e => setCat(e.target.value)} />
                                     <label className="form-check-label" htmlFor="food">
                                         Food
                                     </label>
@@ -84,7 +145,7 @@ const Write = () => {
                                 </li>
                                 <li>
                                     <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="diet" />
+                                    <input className="form-check-input" type="radio" checked={cat === "diet"} name="cat" id="diet" value="diet" onChange={e => setCat(e.target.value)} />
                                     <label className="form-check-label" htmlFor="diet">
                                         Diet
                                     </label>
@@ -92,7 +153,7 @@ const Write = () => {
                                 </li>
                                 <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="nutrition" />
+                                    <input className="form-check-input" type="radio" checked={cat === "nutrition"} name="cat" id="nutrition" value="nutrition" onChange={e => setCat(e.target.value)} />
                                     <label className="form-check-label" htmlFor="nutrition">
                                         Nutrition
                                     </label>
@@ -100,7 +161,7 @@ const Write = () => {
                                 </li>
                                 <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="exercise" />
+                                    <input className="form-check-input" type="radio" checked={cat === "exercise"} name="cat" id="exercise" value="exercise" onChange={e => setCat(e.target.value)} />
                                     <label className="form-check-label" htmlFor="exercise">
                                         Exercise
                                     </label>
@@ -108,11 +169,11 @@ const Write = () => {
                                 </li>
                                 <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="health" />
+                                    <input className="form-check-input" type="radio" checked={cat === "health"} name="cat" id="health" value="health" onChange={e => setCat(e.target.value)} />
                                     <label className="form-check-label" htmlFor="health">
                                         Health
                                     </label>
-                                    </div>
+                                </div>
                                 </li>
                             </ul>
                         </div>

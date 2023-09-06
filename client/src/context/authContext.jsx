@@ -13,12 +13,20 @@ const AuthContextProvider = ({ children }) => {
     const url_logout = "http://localhost:7007/api/auth/logout"
 
     const login = async (inputs) => {
-        const res = await axios.post(url_login, inputs);
+        const res = await axios.post(url_login, inputs, {
+            method: "POST",
+            credentials: "include",
+            withCredentials: true,
+        });
         setCurrentUser(res.data)
     }
 
-    const logout = async (inputs) => {
-        await axios.post(url_logout)
+    const logout = async () => {
+        await axios.get(url_logout, {
+            method: "GET", 
+            withCredentials: true,
+            credentials: 'include'        
+        })
         setCurrentUser(null)
     }
 

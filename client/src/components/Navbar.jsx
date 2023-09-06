@@ -14,7 +14,7 @@ const Navbar = () => {
         <nav className="navbar fixed-top bg-body-tertiary navbar-expand-lg mb-5">
             <div className="container container-navbar">
                 <Link 
-                    className='navbar-brand ms-2 brandy' 
+                    className='navbar-brand brandy' 
                     to="/"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
@@ -22,45 +22,56 @@ const Navbar = () => {
                 {/* {DisplayLogo} */}
                     Diet&Nutrition
                 </Link>
-                <div className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div className="navbar-toggler toggly" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span><GiHamburgerMenu style={{ color: "#66af6b" }} /></span>
                 </div>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li className="nav-item">
-                    <Link className='nav-link' to="/?cat=food">Food</Link>
+                <div className="collapse navbar-collapse ms-4 nav-coll" id="navbarSupportedContent">
+                <ul className="navbar-nav ms-auto mb-2 mb-lg-0 ul-comp">
+                    <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul className="dropdown-menu">
+                        <li className="nav-item">
+                            <Link className='nav-link' to="/?cat=food">Food</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className='nav-link' to="/?cat=diet">Diet</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className='nav-link' to="/?cat=nutrition">Nutrition</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className='nav-link' to="/?cat=exercise">Exercise</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className='nav-link' to="/?cat=health">Health</Link>
+                        </li>
+                    </ul>
                     </li>
                     <li className="nav-item">
-                    <Link className='nav-link' to="/?cat=diet">Diet</Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link className='nav-link' to="/?cat=nutrition">Nutrition</Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link className='nav-link' to="/?cat=exercise">Exercise</Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link className='nav-link' to="/?cat=health">Health</Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link className='nav-link' to="/profile">{currentUser?.username}</Link>
+                        <Link className='nav-link' to="/profile">{currentUser?.username}</Link>
                     </li>
                     <li className="nav-item">
                         { 
                         currentUser? 
                         (
-                            <Link className='nav-link'><span onClick={logout}>Logout</span></Link>
+                            <Link className='nav-link logout'><span onClick={logout}>Logout</span></Link>
                         ) :  
                         (
-                            <Link className='nav-link' to="/login">Log in</Link>
+                            <Link className='nav-link login' to="/login">Log in</Link>
                         )
                         }
                     </li>
-                    <li className="nav-item">
-                        <div className="nav-item-write">
-                            <Link className='nav-link' to="/write">Write</Link>
-                        </div>
-                    </li>
+                    {
+                        currentUser && (
+                            <li className="nav-item">
+                                <div className="nav-item-write">
+                                    <Link className='nav-link' to="/write">Write</Link>
+                                </div>
+                            </li>
+                        )
+                    }
                 </ul>
                 </div>
             </div>
