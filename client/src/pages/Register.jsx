@@ -6,11 +6,11 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
-    const [err, setErr] = useState(null)
-
+    const [err, setErr] = useState(null);
+    const serverAddress = "http://localhost:7007"
     const navigate = useNavigate();
-
-    const url = "http://localhost:7007/api/auth/register"
+    
+    const url = `${serverAddress}/api/auth/register`
     const inputs = {
         "email": email,
         "password": password,

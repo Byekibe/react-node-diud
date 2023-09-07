@@ -7,10 +7,10 @@ const AuthContextProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(
         JSON.parse(localStorage.getItem("user")) || null
     );
+    const serverAddress = "http://localhost:7007"
     
-    const url_login = "http://localhost:7007/api/auth/login"
-
-    const url_logout = "http://localhost:7007/api/auth/logout"
+    const url_login = `${serverAddress}/api/auth/login`;
+    const url_logout = `${serverAddress}/api/auth/logout`;
 
     const login = async (inputs) => {
         const res = await axios.post(url_login, inputs, {

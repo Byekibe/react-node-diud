@@ -19,6 +19,7 @@ const Write = () => {
     const [cat, setCat] = useState(state?.cat || "");
     const [imgUrl, setImgUrl] = useState(state?.img || "");
     const [id] = useState('preview-only');
+    const serverAddress = "http://localhost:7007"
 
     const addOpts = {
         method: "POST",
@@ -38,8 +39,8 @@ const Write = () => {
         title, subTitle, desc: text, cat, img: imgUrl, date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
     }
 
-    const update_post_url = `http://localhost:7007/api/posts/${state?.id}`
-    const add_post_url = `http://localhost:7007/api/posts`
+    const update_post_url = `${serverAddress}/api/posts/${state?.id}`;
+    const add_post_url = `${serverAddress}/api/posts`;
     const handleClick = async () => {
         if (text !== "" && title !== "" && subTitle !== "" && imgUrl !=="" && cat !== "") {
             try {

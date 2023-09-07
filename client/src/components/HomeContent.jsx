@@ -39,10 +39,11 @@ const HomeContent = () => {
 
     const [posts, setPosts] = useState([]);
     const [err, setErr] = useState();
+    const serverAddress = "http://localhost:7007"
 
     const cat = useLocation().search
 
-    const get_post_url = `http://localhost:7007/api/posts${cat}`
+    const get_post_url = `${serverAddress}/api/posts${cat}`;
 
     useEffect(() => {
         const fetchData = async () => {
