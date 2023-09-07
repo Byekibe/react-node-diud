@@ -14,12 +14,12 @@ const Write = () => {
     const state = useLocation().state;
     const [text, setText] = useState(state?.desc || "");
     const [title, setTitle] = useState(state?.title || "");
+    const [subTitle, setSubTitle] = useState(state?.subTitle || "");
     const [file, setFile] = useState(null);
     const [cat, setCat] = useState(state?.cat || "");
     const [imgUrl, setImgUrl] = useState(state?.img || "");
     const [id] = useState('preview-only');
-    // unoptimized
-    // console.log(state);
+
     const addOpts = {
         method: "POST",
         withCredentials: 'true',
@@ -31,17 +31,17 @@ const Write = () => {
     }
 
     const inputs = {
-        title, desc: text, cat, img: imgUrl
+        title, subTitle, desc: text, cat, img: imgUrl
     }
 
     const addInputs = {
-        title, desc: text, cat, img: imgUrl, date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
+        title, subTitle, desc: text, cat, img: imgUrl, date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
     }
 
     const update_post_url = `http://localhost:7007/api/posts/${state?.id}`
     const add_post_url = `http://localhost:7007/api/posts`
     const handleClick = async () => {
-        if (text !== "" && title !== "" && imgUrl !=="" && cat !== "") {
+        if (text !== "" && title !== "" && subTitle !== "" && imgUrl !=="" && cat !== "") {
             try {
                 state? await axios.put(update_post_url, inputs, updateOpts) : await axios.post(add_post_url, addInputs, addOpts);
                 setTitle("");
@@ -75,6 +75,19 @@ const Write = () => {
                         onChange={(e) => setTitle(e.target.value)}
                     />
                     <label htmlFor="floatingTitle">Title</label>
+                </div>
+
+                <div className="form-floating mb-3">
+                    <input 
+                        type="text" 
+                        className="form-control" 
+                        id="floatingSubTitle" 
+                        placeholder="subTitle" 
+                        required
+                        value={subTitle}
+                        onChange={(e) => setSubTitle(e.target.value)}
+                    />
+                    <label htmlFor="floatingTitle">Sub Title</label>
                 </div>
 
                 <div className="form-floating mb-3 textarea">

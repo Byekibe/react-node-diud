@@ -48,9 +48,6 @@ const SingleContent = () => {
         }
     }
 
-    //
-    // const filteredPosts = posts.filter(post => post.id !== id)
-
     return (
         <div className="container single-content mb-5">
             <div className="row">
@@ -90,7 +87,7 @@ const SingleContent = () => {
                         <h1>{post.title}</h1>
                     </div>
                     <div className="post-body">
-                        {post.desc}
+                        {post.subTitle}
                     </div>
                 </div>
                 <div className="col col-aside">

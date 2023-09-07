@@ -21,7 +21,7 @@ const AllPosts = ({ post }) => {
                 <h1>
                     <Link style={style} className="links" to={`/post/${post.id}`}>{post.title}</Link>
                 </h1>
-                <p>{post.desc}</p>
+                <p>{post.subTitle}</p>
                 <button 
                     className="mb-5"
                     onMouseEnter={() => setFontColor(true)}
