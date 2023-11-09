@@ -8,7 +8,7 @@ const Menu = ({ cat }) => {
     const serverAddress = "http://localhost:7007"
     const {id} = useParams()
     // console.log(id)
-    const get_posts_url = `${serverAddress}/api/posts/?cat=${cat}`;
+    const get_posts_url = `/api/posts/?cat=${cat}`;
     // const filteredPosts = posts.map(post => {
     //     if (post.id !== id) {
     //         console.log(post)

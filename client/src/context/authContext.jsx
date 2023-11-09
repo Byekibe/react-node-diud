@@ -9,8 +9,8 @@ const AuthContextProvider = ({ children }) => {
     );
     const serverAddress = "http://localhost:7007"
     
-    const url_login = `${serverAddress}/api/auth/login`;
-    const url_logout = `${serverAddress}/api/auth/logout`;
+    const url_login = "/api/auth/login";
+    const url_logout = "/api/auth/logout";
 
     const login = async (inputs) => {
         const res = await axios.post(url_login, inputs, {

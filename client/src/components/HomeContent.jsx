@@ -43,7 +43,7 @@ const HomeContent = () => {
 
     const cat = useLocation().search
 
-    const get_post_url = `${serverAddress}/api/posts${cat}`;
+    const get_post_url = `/api/posts${cat}`;
 
     useEffect(() => {
         const fetchData = async () => {

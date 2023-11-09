@@ -19,8 +19,8 @@ const SingleContent = () => {
     const [post, setPost] = useState({});
     const [err, setErr] = useState(null)
 
-    const get_post_url = `${serverAddress}/api/posts/${id}`;
-    const delete_post_url = `${serverAddress}/api/posts/${id}`;
+    const get_post_url = `/api/posts/${id}`;
+    const delete_post_url = `/api/posts/${id}`;
 
     useEffect(() => {
         const fetchData = async () => {

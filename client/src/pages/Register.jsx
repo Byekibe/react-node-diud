@@ -10,7 +10,7 @@ const Register = () => {
     const serverAddress = "http://localhost:7007";
     const navigate = useNavigate();
     
-    const url = `${serverAddress}/api/auth/register`
+    const url = "/api/auth/register"
     const inputs = {
         "email": email,
         "password": password,

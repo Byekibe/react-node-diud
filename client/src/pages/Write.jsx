@@ -39,8 +39,8 @@ const Write = () => {
         title, subTitle, desc: text, cat, img: imgUrl, date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
     }
 
-    const update_post_url = `${serverAddress}/api/posts/${state?.id}`;
-    const add_post_url = `${serverAddress}/api/posts`;
+    const update_post_url = `/api/posts/${state?.id}`;
+    const add_post_url = "/api/posts";
     const handleClick = async () => {
         if (text !== "" && title !== "" && subTitle !== "" && imgUrl !=="" && cat !== "") {
             try {
